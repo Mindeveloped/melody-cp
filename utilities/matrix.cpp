@@ -1,5 +1,5 @@
 struct mat {
-    const int DIM=2;
+    static const int DIM=2;
     int a[DIM][DIM];
     mat () {
         memset(a,0,sizeof(a));
