@@ -19,6 +19,9 @@ using namespace std;
 
 const bool MT = 0;
 
+void cleanup() {
+
+}
 void solve(){
 	// Insert your code here
 }
@@ -27,6 +30,7 @@ int main (){
 	if(MT) cin>>testcases;
 	while(testcases--){
 		solve();
+		cleanup();
 	}
 	return 0;
 }
