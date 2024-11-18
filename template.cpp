@@ -14,16 +14,20 @@
 #define popf pop_front
 #define popb pop_back
 #define nb(x) (1<<((x)-1))
+#define x1 __melody1
+#define x2 __melody2
+#define y1 __melody3
+#define y2 __melody4
 #define iosoptim ios::sync_with_stdio(0);cin.tie(0);
 using namespace std;
 
 const bool MT = 0;
 
-void cleanup() {
-
-}
 void solve(){
 	// Insert your code here
+}
+void cleanup() {
+
 }
 int main (){
 	int testcases=1;
