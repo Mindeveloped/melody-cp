@@ -1,31 +1,35 @@
-struct mat {
-    static const int DIM=2;
-    int a[DIM][DIM];
-    mat () {
-        memset(a,0,sizeof(a));
-    }
-    mat (const mat &b) {
-        memcpy(a,b.a,sizeof(b.a));
-    }
-    mat operator + (const mat&b) const {
-        mat c;
-        F(i,0,DIM-1){
-            F(j,0,DIM-1){
-                c.a[i][j]=a[i][j]+b.a[i][j];
+template<int n,int m> struct matrix {
+    int a[n+1][m+1];
+    matrix() { memset(a,0,sizeof(a)); }
+    matrix(const matrix<n,m> &obj) { memcpy(a,obj.a,sizeof(obj.a)); }
+    matrix operator +(const matrix<n,m> &obj) const {
+        matrix<n,m> res;
+        F(i,1,n){
+            F(j,1,m){
+                res.a[i][j]=a[i][j]+obj.a[i][j];
             }
         }
-        return c;
+        return res;
     }
-    mat operator * (const mat&b) const {
-        mat c;
-        F(i,0,DIM-1){
-            F(j,0,DIM-1){
-                c.a[i][j]=0;
-                F(k,0,DIM-1){
-                    c.a[i][j]+=a[i][k]*b.a[k][j];
+    matrix operator -(const matrix<n,m> &obj) const {
+        matrix<n,m> res;
+        F(i,1,n){
+            F(j,1,m){
+                res.a[i][j]=a[i][j]-obj.a[i][j];
+            }
+        }
+        return res;
+    }
+    template<int k>
+    matrix<n,k> operator *(const matrix<m,k> &obj){
+        matrix<n,m> res;
+        F(i,1,n){
+            F(j,1,m){
+                F(p,1,k) {
+                    res.a[i][p]+=a[i][j]*obj.a[j][p];
                 }
             }
         }
-        return c;
+        return res;
     }
 };
